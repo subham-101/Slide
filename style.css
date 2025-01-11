@@ -1,0 +1,65 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: url("bg/bg.jpg");
+    background-size: cover;
+    height: 90vh;
+    background-color: #323ae2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .2rem;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+  }
+  .item img {
+    align-items: center;
+    width: 100px;
+    height: 200px;
+  }
+  .list .item {
+    transition: 0.5s;
+    filter: brightness(0.05);
+  }
+  .list .item:hover {
+    filter: brightness(1);
+    transform: translateZ(200px);
+    cursor: pointer;
+  }
+  /* get the second item to the right  */
+  .list .item:hover + * {
+    filter: brightness(0.6);
+    transform: translateZ(150px) rotateY(40deg);
+  }
+  /* to the right + 1 */
+  .list .item:hover + * + * {
+    filter: brightness(0.4);
+    transform: translateZ(70px) rotateY(20deg);
+  }
+  /* to the right + 1 + 1 */
+  .list .item:hover + * + * + * {
+    filter: brightness(0.2);
+    transform: translateZ(30px) rotateY(10deg);
+  }
+  /* to the left  */
+  .list .item:has(+ *:hover) {
+    filter: brightness(0.6);
+    transform: translateZ(150px) rotateY(-40deg);
+  }
+  /* to the left + 1 */
+  .list .item:has(+ * + *:hover) {
+      filter: brightness(0.4);
+      transform: translateZ(70px) rotateY(-20deg);
+    }
+  /* to the left + 1 + 1 */
+    .list .item:has(+ * + * + *:hover) {
+      filter: brightness(0.2);
+      transform: translateZ(30px) rotateY(-10deg);}
+    
